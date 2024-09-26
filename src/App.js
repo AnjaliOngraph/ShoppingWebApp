@@ -1,13 +1,15 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import React from "react";
 
-import Header from "./components/Mainpage/Header";
-import Productdetails from "./components/productpages/ProductDetails";
+import Header from "./components/mainPages/Header";
+import Productdetails from "./components/productPages/ProductDetails";
 import Signup from "./components/accountPage/signupPage";
-import Signin from "./components/accountPage/SigninPage";
-import SubcategoryProducts from "./components/productpages/SubcategoryProducts";
-import Cart from "./components/Cartprocess/Cart";
-
+import Signin from "./components/accountPage/signinPage";
+import SubcategoryProducts from "./components/productPages/SubcategoryProducts";
+import Cart from "./components/cartProcess/cart";
+import Address from "./components/cartProcess/address";
+import Orders from "./components/order/Order";
+import PaymentPage from "./components/cartProcess/paymentPage";
 
 function App() {
 
@@ -19,12 +21,15 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route
-          path="/subcategory-products/:id"
+          path="/subcategory/products/:id"
           element={<SubcategoryProducts />}
         />
-        <Route path="/product-details/:id" element={<Productdetails />} />
+        <Route path="/product/:id" element={<Productdetails />} />
 
         <Route path="/product/cart" element={<Cart />}></Route>
+        <Route path="/cart/address" element={<Address />}></Route>
+        <Route path="/active-orders" element={<Orders />}></Route>
+        <Route path="/cart/address/checkout" element={<PaymentPage/>}></Route>
       </Routes>
     
     </BrowserRouter>

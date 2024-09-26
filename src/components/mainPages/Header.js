@@ -2,11 +2,13 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 import bgimage from "../images/shopping-cart-grocery-store.jpg";
 import logo from "../images/grocessies_logo.jpg";
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <div>
       <Popover className="relative bg-white">
@@ -24,14 +26,21 @@ export default function Header() {
             </div>
             <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
               <a
-                href="/signin"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/signin");
+                }}
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
               >
                 Sign in
               </a>
               <a
-                href="/signup"
-                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-lime-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-lime-700"
+                
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/signup");
+                }}
+                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-lime-600 px-4 py-2 cursor-pointer  text-base font-medium text-white shadow-sm hover:bg-lime-700"
               >
                 Sign up
               </a>
@@ -64,7 +73,10 @@ export default function Header() {
                   </a>
                   <p className="mt-6 text-center text-base font-medium text-gray-500">
                     Existing customer?{" "}
-                    <a href="/signin" className="text-lime-600 hover:text-lime-700">
+                    <a
+                      href="/signin"
+                      className="text-lime-600 hover:text-lime-700"
+                    >
                       Sign in
                     </a>
                   </p>
